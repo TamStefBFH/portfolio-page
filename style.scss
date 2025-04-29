@@ -1,0 +1,182 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Rubik", sans-serif;
+}
+:root {
+    --text-color: #fff;
+    --color: #f52cf9;
+    --bg-color: #1c1c1d;
+    --first: #fff;
+    --second: #000;
+    --mob-color: #363636;
+}
+
+body.dark-mode {
+    --text-color: #222;
+    --bg-color: #f2f2f2;
+    --first: #222;
+    --second: #fff;
+    --mob-color: #eae6e6;
+}
+
+.container {
+    max-width: 1250px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+// Header Start
+
+header {
+    background: var(--bg-color);
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .logo {
+            z-index: 1;
+
+            a {
+                text-decoration: none;
+                font-size: 32px;
+                font-weight: 600;
+                color: var(--first);
+
+                span {
+                    color: var(--color);
+                }
+            }
+        }
+
+        .list-darkmode-menu {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+
+            ul {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 35px;
+                font-size: 18px;
+                list-style: none;
+                z-index: 1;
+
+                li {
+                    a {
+                        position: relative;
+                        text-decoration: none;
+                        color: var(--first);
+                        font-size: 18px;
+                        font-weight: 500;
+                        transition: 0.3s ease;
+
+                        &:hover {
+                            color: var(--color);
+
+                            &::before {
+                                width: 100%;
+                            }
+                        }
+
+                        &::before {
+                            content: '';
+                            position: absolute;
+                            bottom: -7px;
+                            left: 0;
+                            width: 0;
+                            height: 2.5px;
+                            background: var(--color);
+                            transition: 0.3s ease;
+                        }
+                    }
+                }
+            }
+
+            .mode {
+                color: var(--text-color);
+                font-size: 24px;
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+                user-select: none;
+
+                .fa-moon,
+                .fa-sun {
+                    position: absolute;
+                    animation: animate 0.5s;
+                }
+
+                .fa-sun {
+                    display: none;
+
+                }
+
+                input {
+                    position: absolute;
+                    opacity: 0;
+                    cursor: pointer;
+                    height: 0;
+                    width: 0;
+                }
+
+            }
+
+            @keyframes animate {
+                0% {
+                    transform: rotate(-360deg) scale(0);
+                    opacity: 0;
+                }
+                75% {
+                    transform: rotate(25deg);
+                }
+            }
+
+            .hamburger {
+                position: relative;
+                width: 30px;
+                cursor: pointer;
+                appearance: none;
+                outline: none;
+                background: none;
+                scale: 0.9;
+                // display: none;
+
+                .bar,
+                &::after,
+                &::before {
+                    content: '';
+                    display: block;
+                    width: 100%;
+                    height: 3px;
+                    background: var(--first);
+                    margin: 6px 0;
+                    transition: 0.4s;
+                }
+
+                &.active::before {
+                    transform: rotate(-45deg) translate(-8px, 5px);
+                }
+
+                &.active::after {
+                    transform: rotate(-45deg) translate(-8px, 5px);
+                }
+
+                &.active .bar {
+                    opacity: 0;
+                }
+            }
+        }
+    }
+}
+

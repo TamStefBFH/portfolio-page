@@ -1,31 +1,41 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - TamStefBFH</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Responsive Personal Portfolio</title>
 </head>
 <body>
+
     <header>
-        <h1>Herzlich Willkommen auf meiner Portfolio-Seite</h1>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <a href="#"><span>Tamara</span> Stefania</a>
+                </div>
+                <div class="list-darkmode-menu">
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Skills</a></li>
+                        <li><a href="#">Portfolio</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                    <label class="mode">
+                        <input type="checkbox" checked="checked" id="darkModeButton" />
+                        <i class="fa-solid fa-sun"></i>
+                        <i class="fa-solid fa-moon"></i>
+                    </label>
+                    <button class="hamburger">
+                        <div class="bar"></div>
+                    </button>
+                </div>
+            </nav>
+        </div>
     </header>
-
-    <main class="container">
-        <section>
-            <h2>Über mich</h2>
-            <p>👋 Hola, ich bin <strong>Tamara</strong> und studiere an der <strong>Berner Fachhochschule Wirtschaftsinformatik</strong>.</p>
-            <p>💻 In meiner Freizeit koche, lese ich gerne und verbringe Zeit mit Freunden & Familie.</p>
-            <p>🔧 Ich habe zwei Brüder – wir alle haben einen IT-Background! 👨‍💻👩‍💻</p>
-        </section>
-
-        <section>
-            <h2>Kontakt & Projekte</h2>
-            <p>📫 Finde mich auf <a href="https://github.com/TamStefBFH" class="highlight-link">GitHub</a></p>
-            <button class="button" id="colorChangeButton">Klick mich!</button>
-        </section>
-    </main>
-
-    <script src="script.js"></script>
+    
+    <script src="main.js"></script>
 </body>
 </html>
