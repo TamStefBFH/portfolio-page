@@ -1,4 +1,4 @@
-//Menu 
+// Menu 
 
 const hamburger = document.querySelector('.hamburger');
 const navList = document.querySelector('nav ul');
@@ -27,4 +27,14 @@ darkModeButton.addEventListener('change', () => {
     } else {
         enableDarkMode();
     }
+});
+
+// Multiple Text
+
+const typed = new Typed('.multiple', {
+    strings:['Business Analystin', 'Requirements Engineer', 'IT Business Consultant'],
+    tspeSpeed: 100,
+    backSpeed: 100,
+    backDelay: 1000,
+    loop: true
 });
