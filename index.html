@@ -2,76 +2,138 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-    <title>Responsive Personal Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Responsive Personal Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+
+    #music-toggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+    }
+
+    #toggleMusic {
+      background-color: #f52cf9;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      font-size: 24px;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 0 15px #f52cf9;
+    }
+
+    #spotifyPlayer {
+      display: none;
+      position: fixed;
+      bottom: 90px;
+      right: 20px;
+      z-index: 1000;
+    }
+  </style>
 </head>
 
 <body>
 
-    <header>
-        <div class="container">
-            <nav>
-                <div class="logo">
-                    <a href="#"><span>Tamara</span> Stefania</a>
-                </div>
-                <div class="list-darkmode-menu">
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Skills</a></li>
-                        <li><a href="#">Portfolio</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
-                    <label class="mode">
-                        <input type="checkbox" checked="checked" id="darkModeButton" />
-                        <i class="fa-solid fa-sun"></i>
-                        <i class="fa-solid fa-moon"></i>
-                    </label>
-                    <button class="hamburger">
-                        <div class="bar"></div>
-                    </button>
-                </div>
-            </nav>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">
+          <a href="#"><span>Tamara</span> Stefania</a>
         </div>
-    </header>
-
-    <section class="home">
-        <div class="container">
-            <div class="home-info">
-                <div class="left">
-                    <h3>Hello I'm</h3>
-                    <h1>Tamara Stefania</h1>
-                    <h4>And I'm a <span class="multiple"></span></h4>
-                    <p>
-                        Hi! I'm Tamara Stefania, a Business Analyst specializing in innovation,
-                        supporting companies in developing forward-thinking solutions.
-                        My focus is on identifying new business models, designing innovative processes
-                        and actively driving digital transformation—always with the aim of creating sustainable value.
-                    </p>
-                    <div class="social">
-                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
-                    </div>
-                    <div class="btn">
-                        <button>Download CV</button>
-                    </div>
-                </div>
-                <div class="right">
-                    <div class="profile">
-                        <img src="images/profile.jpg" alt="">
-                    </div>
-                </div>
-            </div>
+        <div class="list-darkmode-menu">
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Skills</a></li>
+            <li><a href="#">Portfolio</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+          <label class="mode">
+            <input type="checkbox" checked="checked" id="darkModeButton" />
+            <i class="fa-solid fa-sun"></i>
+            <i class="fa-solid fa-moon"></i>
+          </label>
+          <button class="hamburger">
+            <div class="bar"></div>
+          </button>
         </div>
-    </section>
+      </nav>
+    </div>
+  </header>
 
-    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
-    <script src="main.js"></script>
+  <section class="home">
+    <div class="container">
+      <div class="home-info">
+        <div class="left">
+          <h3>Hello I'm</h3>
+          <h1>Tamara Stefania</h1>
+          <h4>And I'm a <span class="multiple"></span></h4>
+          <p>
+            Hi! I'm Tamara Stefania, a Business Analyst specializing in innovation,
+            supporting companies in developing forward-thinking solutions.
+            My focus is on identifying new business models, designing innovative processes
+            and actively driving digital transformation—always with the aim of creating sustainable value.
+          </p>
+          <div class="social">
+            <a href="https://www.linkedin.com/in/tamara-stefania-343965209/" target="_blank" rel="noopener noreferrer">
+              <i class="fa-brands fa-linkedin-in"></i>
+            </a>
+            <a href="https://www.facebook.com/share/16WxFKSjyj/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" title="Facebook">
+              <i class="fa-brands fa-facebook-f"></i>
+            </a>
+            <a href="under-construction.html" target="_blank" title="Instagram">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+          </div>
+          <div class="btn">
+            <a href="cv.pdf" download target="_blank" rel="noopener noreferrer">
+              <button>Download CV</button>
+            </a>
+          </div>
+        </div>
+        <div class="right">
+          <div class="profile">
+            <img src="images/profile.jpg" alt="Tamara Profile Picture" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <div id="music-toggle">
+    <button id="toggleMusic" title="Play music">🎵</button>
+  </div>
+
+
+  <div id="spotifyPlayer">
+    <iframe style="border-radius:12px"
+      src="https://open.spotify.com/embed/album/2W7lnrsKqd1XXCHSFKl9hE?utm_source=generator&theme=0"
+      width="300" height="80" frameBorder="0"
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+      loading="lazy">
+    </iframe>
+  </div>
+
+
+  <script>
+    const btn = document.getElementById("toggleMusic");
+    const player = document.getElementById("spotifyPlayer");
+
+    btn.addEventListener("click", () => {
+      player.style.display = player.style.display === "none" ? "block" : "none";
+    });
+  </script>
+
+  <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+  <script src="main.js"></script>
 </body>
 
 </html>

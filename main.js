@@ -29,8 +29,6 @@ darkModeButton.addEventListener('change', () => {
     }
 });
 
-// Multiple Text
-
 const typed = new Typed('.multiple', {
     strings:['Business Analystin', 'Requirements Engineer', 'IT Business Consultant'],
     typeSpeed: 100,

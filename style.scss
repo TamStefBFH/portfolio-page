@@ -224,7 +224,7 @@ header {
 
             h4 {
                 color: var(--first);
-                font-size: 2.2 em;
+                font-size: 2.2em;
                 font-weight: bold;
                 min-width: 280px;
                 margin-bottom: 20px;
@@ -366,7 +366,7 @@ header {
     header {
         background: var(--mob-color);
         position: sticky;
-        top: 0
+        top: 0;
         z-index: 9;
 
         nav {
@@ -382,7 +382,7 @@ header {
                     align-items: flex-start;
                     justify-content: flex-start;
                     flex-direction: column;
-                    padding: 30px 50 px;
+                    padding: 30px 50px;
                     gap: 30px;
                     transition: 0.3s ease;
 
