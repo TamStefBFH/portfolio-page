@@ -36,3 +36,33 @@ const typed = new Typed('.multiple', {
     backDelay: 1000,
     loop: true
 });
+
+document.getElementById("openContactModal").addEventListener("click", function(e) {
+  e.preventDefault();
+  document.getElementById("contactModal").style.display = "flex";
+});
+
+document.querySelector(".close-button").addEventListener("click", function() {
+  document.getElementById("contactModal").style.display = "none";
+});
+
+window.addEventListener("click", function(e) {
+  if (e.target === document.getElementById("contactModal")) {
+    document.getElementById("contactModal").style.display = "none";
+  }
+});
+
+document.getElementById("contactForm").addEventListener("submit", function(e) {
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const message = document.getElementById("message").value.trim();
+  if (!name || !email || !message) {
+    e.preventDefault();
+    alert("Bitte alle Felder ausfüllen.");
+  } else {
+    alert("Nachricht erfolgreich versendet! (Demonstration)");
+    e.preventDefault();
+    document.getElementById("contactModal").style.display = "none";
+    document.getElementById("contactForm").reset();
+  }
+});
