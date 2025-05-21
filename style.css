@@ -429,11 +429,11 @@ header nav .list-darkmode-menu .hamburger.active .bar {
 }
 
 .modal-content {
-  background: #1e1e1e;
+  background: var(--bg-color);
   border: 2px solid var(--color);
   padding: 60px 50px;
   border-radius: 20px;
-  color: white;
+  color: var(--text-color);
   width: 95%;
   max-width: 850px;
   position: relative;
@@ -456,7 +456,7 @@ header nav .list-darkmode-menu .hamburger.active .bar {
 }
 
 .modal-content p {
-  color: #ccc;
+  color: var(--text-color);
   font-size: 0.95em;
   margin-bottom: 30px;
 }
@@ -468,7 +468,7 @@ header nav .list-darkmode-menu .hamburger.active .bar {
 .modal-content label {
   display: block;
   margin-bottom: 6px;
-  color: #eee;
+  color: var(--text-color);
   font-weight: 600;
 }
 
@@ -476,10 +476,10 @@ header nav .list-darkmode-menu .hamburger.active .bar {
 .modal-content textarea {
   width: 100%;
   padding: 12px;
-  background: #2a2a2a;
+  background: var(--second);
   border: none;
   border-radius: 8px;
-  color: white;
+  color: var(--text-color);
   margin-bottom: 20px;
   font-size: 1em;
 }
@@ -495,7 +495,7 @@ header nav .list-darkmode-menu .hamburger.active .bar {
   border: 2px solid #f52cf9;
   border-radius: 30px;
   background: transparent;
-  color: white;
+  color: var(--text-color);
   font-weight: bold;
   font-size: 1rem;
   transition: all 0.3s ease;
@@ -505,7 +505,7 @@ header nav .list-darkmode-menu .hamburger.active .bar {
 
 .btn-purple:hover {
   background-color: #f52cf9;
-  color: white;
+  color: var(--text-color);
   box-shadow: 0 0 20px #f52cf9;
 }
 
