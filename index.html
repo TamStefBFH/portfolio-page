@@ -9,7 +9,6 @@
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600&display=swap" rel="stylesheet" />
   <style>
-
     #music-toggle {
       position: fixed;
       bottom: 20px;
@@ -41,6 +40,7 @@
 
 <body>
 
+  <!-- HEADER / NAVIGATION -->
   <header>
     <div class="container">
       <nav>
@@ -50,7 +50,7 @@
         <div class="list-darkmode-menu">
           <ul>
             <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
+            <li><a href="about.html">About</a></li>
             <li><a href="#">Skills</a></li>
             <li><a href="#">Portfolio</a></li>
             <li><a href="#" id="openContactModal">Contact</a></li>
@@ -68,6 +68,7 @@
     </div>
   </header>
 
+  <!-- HOME SECTION -->
   <section class="home">
     <div class="container">
       <div class="home-info">
@@ -82,10 +83,10 @@
             and actively driving digital transformation—always with the aim of creating sustainable value.
           </p>
           <div class="social">
-            <a href="https://www.linkedin.com/in/tamara-stefania-343965209/" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.linkedin.com/in/tamara-stefania-343965209/" target="_blank">
               <i class="fa-brands fa-linkedin-in"></i>
             </a>
-            <a href="https://www.facebook.com/share/16WxFKSjyj/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" title="Facebook">
+            <a href="https://www.facebook.com/share/16WxFKSjyj/?mibextid=wwXIfr" target="_blank" title="Facebook">
               <i class="fa-brands fa-facebook-f"></i>
             </a>
             <a href="under-construction.html" target="_blank" title="Instagram">
@@ -93,7 +94,7 @@
             </a>
           </div>
           <div class="btn">
-            <a href="cv.pdf" download target="_blank" rel="noopener noreferrer">
+            <a href="cv.pdf" download target="_blank">
               <button>Download CV</button>
             </a>
           </div>
@@ -107,11 +108,11 @@
     </div>
   </section>
 
-
+ 
+  <!-- MUSIK BUTTON + SPOTIFY PLAYER -->
   <div id="music-toggle">
     <button id="toggleMusic" title="Play music">🎵</button>
   </div>
-
 
   <div id="spotifyPlayer">
     <iframe style="border-radius:12px"
@@ -122,7 +123,7 @@
     </iframe>
   </div>
 
-
+  <!-- SCRIPTS -->
   <script>
     const btn = document.getElementById("toggleMusic");
     const player = document.getElementById("spotifyPlayer");
@@ -134,33 +135,27 @@
 
   <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
 
-
-
-<div id="contactModal" class="modal">
-  <div class="modal-content">
-    <span class="close-button">&times;</span>
-    <h2>Contact <span style="color: #f52cf9">Me</span></h2>
-    <p>I'd love to hear from you! Please fill out the form below:</p>
-    <form action="https://formspree.io/f/mzzrwgnz" method="POST">
-      <label for="name">Name</label>
-      <input type="text" name="name" required>
-
-      <label for="email">E-Mail</label>
-      <input type="email" name="email" required>
-
-      <label for="message">Message</label>
-      <textarea name="message" required></textarea>
-
-      <div class="button-wrapper">
-        <button type="submit" class="btn-purple">Send</button>
-      </div>
-
-    </form>
+  <!-- CONTACT MODAL -->
+  <div id="contactModal" class="modal">
+    <div class="modal-content">
+      <span class="close-button">&times;</span>
+      <h2>Contact <span style="color: #f52cf9">Me</span></h2>
+      <p>I'd love to hear from you! Please fill out the form below:</p>
+      <form action="https://formspree.io/f/mzzrwgnz" method="POST">
+        <label for="name">Name</label>
+        <input type="text" name="name" required>
+        <label for="email">E-Mail</label>
+        <input type="email" name="email" required>
+        <label for="message">Message</label>
+        <textarea name="message" required></textarea>
+        <div class="button-wrapper">
+          <button type="submit" class="btn-purple">Send</button>
+        </div>
+      </form>
+    </div>
   </div>
-</div>
 
-<script src="main.js"></script>
-  
+  <script src="main.js"></script>
+
 </body>
-
 </html>

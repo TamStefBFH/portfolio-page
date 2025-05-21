@@ -530,4 +530,56 @@ header nav .list-darkmode-menu .hamburger.active .bar {
   border: 1px solid var(--color);
   color: var(--color);
   text-align: center;
+}
+
+.about {
+  background: var(--bg-color);
+  padding: 100px 20px;
+  color: var(--first);
+  text-align: center;
+}
+.about .section-title {
+  font-size: 3em;
+  margin-bottom: 40px;
+  font-weight: bold;
+  color: var(--first);
+}
+.about .section-title span {
+  color: var(--color);
+}
+.about .about-content {
+  display: flex;
+  justify-content: center;
+}
+.about .about-content .about-text {
+  max-width: 900px;
+  font-size: 1.1em;
+  line-height: 1.8;
+  text-align: justify;
+  padding: 0 20px;
+}
+.about .about-content .about-text p {
+  margin-bottom: 20px;
+}
+
+@media screen and (max-width: 768px) {
+  .about {
+    padding: 80px 15px;
+  }
+  .about .section-title {
+    font-size: 2.2em;
+  }
+  .about .about-text {
+    font-size: 1em;
+  }
+}
+/* Sakura Animation Styling */
+#sakuraCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
 }/*# sourceMappingURL=style.css.map */
