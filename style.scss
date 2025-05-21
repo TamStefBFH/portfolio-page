@@ -580,7 +580,7 @@ header {
 }
 
 .modal-content h2 {
-  font-size: 2em;
+  font-size: 2.5em;
   font-weight: bold;
   color: var(--color);
   margin-bottom: 10px;
@@ -588,7 +588,8 @@ header {
 
 .modal-content p {
   color: var(--text-color);
-  font-size: 0.95em;
+  font-size: 1.1em;
+  line-height: 1.5;
   margin-bottom: 30px;
 }
 
