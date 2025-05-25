@@ -1,40 +1,50 @@
 const canvas = document.getElementById('sakuraCanvas');
 if (canvas) {
   const ctx = canvas.getContext('2d');
+
+  // Setze die Canvas-Größe
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 
   const maxPetals = 50;
   const petals = [];
 
+  const sakuraImage = new Image();
+  sakuraImage.src = 'images/petal.png';
+ 
+
   class Petal {
     constructor() {
-      this.x = Math.random() * canvas.width;
-      this.y = Math.random() * canvas.height;
-      this.r = Math.random() * 5 + 2;
-      this.d = Math.random() * maxPetals;
-      this.color = "rgba(255, 182, 193, 0.8)";
-      this.tilt = Math.floor(Math.random() * 5) - 5;
-      this.tiltAngleIncremental = (Math.random() * 0.07) + 0.05;
-      this.tiltAngle = 0;
+      this.reset();
     }
 
-    draw() {
-      ctx.beginPath();
-      ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2, false);
-      ctx.fillStyle = this.color;
-      ctx.fill();
+    reset() {
+      this.x = Math.random() * canvas.width;
+      this.y = Math.random() * -canvas.height;
+      this.size = Math.random() * 12 + 8;
+      this.speed = Math.random() * 1.5 + 0.5;
+      this.swing = Math.random() * 2 - 1;
+      this.angle = Math.random() * Math.PI * 2;
+      this.rotationSpeed = Math.random() * 0.02 - 0.01;
     }
 
     update() {
-      this.tiltAngle += this.tiltAngleIncremental;
-      this.y += (Math.cos(this.d) + 3 + this.r / 2) / 2;
-      this.x += Math.sin(this.tiltAngle) * 2;
-      if (this.y > canvas.height) {
-        this.x = Math.random() * canvas.width;
-        this.y = -10;
+      this.y += this.speed;
+      this.x += Math.sin(this.angle) * 0.5;
+      this.angle += this.rotationSpeed;
+
+      if (this.y > canvas.height + this.size) {
+        this.reset();
+        this.y = -this.size;
       }
-      this.draw();
+    }
+
+    draw() {
+      ctx.save();
+      ctx.translate(this.x, this.y);
+      ctx.rotate(this.angle);
+      ctx.drawImage(sakuraImage, -this.size / 2, -this.size / 2, this.size, this.size);
+      ctx.restore();
     }
   }
 
@@ -48,10 +58,13 @@ if (canvas) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     for (let petal of petals) {
       petal.update();
+      petal.draw();
     }
     requestAnimationFrame(animatePetals);
   }
 
-  initPetals();
-  animatePetals();
+  sakuraImage.onload = () => {
+    initPetals();
+    animatePetals();
+  };
 }

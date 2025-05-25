@@ -15,20 +15,26 @@
     --mob-color: #363636;
 }
 
-body.dark-mode {
-    --text-color: #222;
-    --bg-color: #f2f2f2;
-    --first: #222;
-    --second: #fff;
-    --mob-color: #eae6e6;
+html, body {
+  height: 100%;
+  background: var(--bg-color);
+  transition: background 0.3s ease;
 }
 
-body.light-mode {
+body.dark-mode {
   --text-color: #fff;
   --bg-color: #1c1c1d;
   --first: #fff;
   --second: #000;
   --mob-color: #363636;
+}
+
+body.light-mode {
+  --text-color: #222;
+  --bg-color: #f2f2f2;
+  --first: #222;
+  --second: #fff;
+  --mob-color: #eae6e6;
 }
 
 .container {
@@ -719,9 +725,13 @@ header {
   position: fixed;
   top: 0;
   left: 0;
-  pointer-events: none;
   width: 100%;
   height: 100%;
-  z-index: 0;
+  pointer-events: none;
+  z-index: 0; // Wichtig: zwischen Hintergrund (-1) und Inhalt (1)
 }
+
+
+
+
 
