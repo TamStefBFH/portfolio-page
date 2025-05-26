@@ -6,6 +6,15 @@
     box-sizing: border-box;
     font-family: "Rubik", sans-serif;
 }
+
+
+body {
+  background: var(--bg-color);
+  position: relative;
+  z-index: 1;
+}
+
+
 :root {
     --text-color: #fff;
     --color: #f52cf9;
@@ -670,6 +679,9 @@ header {
   padding: 100px 20px;
   color: var(--first);
   text-align: center;
+  position: relative;
+  z-index: 1;
+
 
   .section-title {
     font-size: 3em;
