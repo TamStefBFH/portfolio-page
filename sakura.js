@@ -24,7 +24,14 @@ window.addEventListener('DOMContentLoaded', () => {
   const petalImg = new Image();
   petalImg.src = 'images/petal.png';
 
+  let aboutTextBox = null;
+
   petalImg.onload = () => {
+    const textElement = document.querySelector('.about-text');
+    if (textElement) {
+      aboutTextBox = textElement.getBoundingClientRect();
+    }
+
     for (let i = 0; i < TOTAL; i++) {
       petalArray.push(new Petal());
     }
@@ -33,6 +40,10 @@ window.addEventListener('DOMContentLoaded', () => {
 
   function render() {
     resizeCanvas();
+    if (document.querySelector('.about-text')) {
+      aboutTextBox = document.querySelector('.about-text').getBoundingClientRect();
+    }
+
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     petalArray.forEach(petal => petal.animate());
     requestAnimationFrame(render);
@@ -46,13 +57,13 @@ window.addEventListener('DOMContentLoaded', () => {
     reset() {
       this.x = Math.random() * canvas.width;
       this.y = Math.random() * canvas.height * 2 - canvas.height;
-      this.w = 30 + Math.random() * 15;
-      this.h = 20 + Math.random() * 10;
-      this.opacity = this.w / 45;
-      this.xSpeed = 2 + Math.random();
-      this.ySpeed = 0.2 + Math.random() * 0.2;
+      this.w = 20 + Math.random() * 10; // kleiner
+      this.h = 12 + Math.random() * 6;
+      this.opacity = this.w / 40;
+      this.xSpeed = 0.3 + Math.random() * 0.4; // eleganter
+      this.ySpeed = 0.1 + Math.random() * 0.2;
       this.flip = Math.random();
-      this.flipSpeed = Math.random() * 0.03;
+      this.flipSpeed = Math.random() * 0.02;
     }
 
     draw() {
@@ -61,11 +72,19 @@ window.addEventListener('DOMContentLoaded', () => {
         this.x = -petalImg.width;
       }
 
-      // Prüfen ob sich die Blüte über .about-text befindet
-      const el = document.elementFromPoint(this.x, this.y);
-      const isOverText = el && el.closest('.about-text');
+      const petalLeft = this.x;
+      const petalRight = this.x + this.w;
+      const petalTop = this.y;
+      const petalBottom = this.y + this.h;
 
-      if (isOverText) return; // nicht zeichnen
+      const isOverText =
+        aboutTextBox &&
+        petalRight > aboutTextBox.left &&
+        petalLeft < aboutTextBox.right &&
+        petalBottom > aboutTextBox.top &&
+        petalTop < aboutTextBox.bottom;
+
+      if (isOverText) return; // Blüte über Text? -> nicht zeichnen
 
       ctx.globalAlpha = this.opacity;
       ctx.drawImage(
