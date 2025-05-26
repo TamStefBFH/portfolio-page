@@ -16,7 +16,7 @@ window.addEventListener('DOMContentLoaded', () => {
     );
   }
 
-  resizeCanvas(); // Initiale Größe setzen
+  resizeCanvas();
   window.addEventListener('resize', resizeCanvas);
 
   const TOTAL = 150;
@@ -32,7 +32,7 @@ window.addEventListener('DOMContentLoaded', () => {
   };
 
   function render() {
-    resizeCanvas(); // Bei jedem Frame neu anpassen, falls sich etwas verändert
+    resizeCanvas();
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     petalArray.forEach(petal => petal.animate());
     requestAnimationFrame(render);
@@ -50,7 +50,7 @@ window.addEventListener('DOMContentLoaded', () => {
       this.h = 20 + Math.random() * 10;
       this.opacity = this.w / 45;
       this.xSpeed = 2 + Math.random();
-      this.ySpeed = 1 + Math.random() * 0.5;
+      this.ySpeed = 0.2 + Math.random() * 0.2;
       this.flip = Math.random();
       this.flipSpeed = Math.random() * 0.03;
     }
@@ -60,6 +60,13 @@ window.addEventListener('DOMContentLoaded', () => {
         this.reset();
         this.x = -petalImg.width;
       }
+
+      // Prüfen ob sich die Blüte über .about-text befindet
+      const el = document.elementFromPoint(this.x, this.y);
+      const isOverText = el && el.closest('.about-text');
+
+      if (isOverText) return; // nicht zeichnen
+
       ctx.globalAlpha = this.opacity;
       ctx.drawImage(
         petalImg,
