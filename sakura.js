@@ -1,57 +1,80 @@
-const canvas = document.getElementById('sakuraCanvas');
-if (canvas) {
-  const ctx = canvas.getContext('2d');
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+window.addEventListener('DOMContentLoaded', () => {
+  const canvas = document.getElementById('sakuraCanvas');
+  if (!canvas) return;
 
-  const maxPetals = 50;
-  const petals = [];
+  const ctx = canvas.getContext('2d');
+
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = Math.max(
+      document.body.scrollHeight,
+      document.documentElement.scrollHeight,
+      document.body.offsetHeight,
+      document.documentElement.offsetHeight,
+      document.body.clientHeight,
+      document.documentElement.clientHeight
+    );
+  }
+
+  resizeCanvas(); // Initiale Größe setzen
+  window.addEventListener('resize', resizeCanvas);
+
+  const TOTAL = 150;
+  const petalArray = [];
+  const petalImg = new Image();
+  petalImg.src = 'images/petal.png';
+
+  petalImg.onload = () => {
+    for (let i = 0; i < TOTAL; i++) {
+      petalArray.push(new Petal());
+    }
+    render();
+  };
+
+  function render() {
+    resizeCanvas(); // Bei jedem Frame neu anpassen, falls sich etwas verändert
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    petalArray.forEach(petal => petal.animate());
+    requestAnimationFrame(render);
+  }
 
   class Petal {
     constructor() {
+      this.reset();
+    }
+
+    reset() {
       this.x = Math.random() * canvas.width;
-      this.y = Math.random() * canvas.height;
-      this.r = Math.random() * 5 + 2;
-      this.d = Math.random() * maxPetals;
-      this.color = "rgba(255, 182, 193, 0.8)";
-      this.tilt = Math.floor(Math.random() * 5) - 5;
-      this.tiltAngleIncremental = (Math.random() * 0.07) + 0.05;
-      this.tiltAngle = 0;
+      this.y = Math.random() * canvas.height * 2 - canvas.height;
+      this.w = 30 + Math.random() * 15;
+      this.h = 20 + Math.random() * 10;
+      this.opacity = this.w / 45;
+      this.xSpeed = 2 + Math.random();
+      this.ySpeed = 1 + Math.random() * 0.5;
+      this.flip = Math.random();
+      this.flipSpeed = Math.random() * 0.03;
     }
 
     draw() {
-      ctx.beginPath();
-      ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2, false);
-      ctx.fillStyle = this.color;
-      ctx.fill();
-    }
-
-    update() {
-      this.tiltAngle += this.tiltAngleIncremental;
-      this.y += (Math.cos(this.d) + 3 + this.r / 2) / 2;
-      this.x += Math.sin(this.tiltAngle) * 2;
-      if (this.y > canvas.height) {
-        this.x = Math.random() * canvas.width;
-        this.y = -10;
+      if (this.y > canvas.height || this.x > canvas.width) {
+        this.reset();
+        this.x = -petalImg.width;
       }
+      ctx.globalAlpha = this.opacity;
+      ctx.drawImage(
+        petalImg,
+        this.x,
+        this.y,
+        this.w * (0.66 + (Math.abs(Math.cos(this.flip)) / 3)),
+        this.h * (0.8 + (Math.abs(Math.sin(this.flip)) / 2)),
+      );
+    }
+
+    animate() {
+      this.x += this.xSpeed;
+      this.y += this.ySpeed;
       this.draw();
+      this.flip += this.flipSpeed;
     }
   }
-
-  function initPetals() {
-    for (let i = 0; i < maxPetals; i++) {
-      petals.push(new Petal());
-    }
-  }
-
-  function animatePetals() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    for (let petal of petals) {
-      petal.update();
-    }
-    requestAnimationFrame(animatePetals);
-  }
-
-  initPetals();
-  animatePetals();
-}
+});
