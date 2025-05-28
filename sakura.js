@@ -49,6 +49,10 @@ window.addEventListener('DOMContentLoaded', () => {
     requestAnimationFrame(render);
   }
 
+  const sakuraImage = new Image();
+  sakuraImage.src = 'images/petal.png';
+ 
+
   class Petal {
     constructor() {
       this.reset();
@@ -56,6 +60,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     reset() {
       this.x = Math.random() * canvas.width;
+
       this.y = Math.random() * canvas.height * 2 - canvas.height;
       this.w = 20 + Math.random() * 10; // kleiner
       this.h = 12 + Math.random() * 6;
@@ -71,6 +76,7 @@ window.addEventListener('DOMContentLoaded', () => {
         this.reset();
         this.x = -petalImg.width;
       }
+
 
       const petalLeft = this.x;
       const petalRight = this.x + this.w;
@@ -96,6 +102,7 @@ window.addEventListener('DOMContentLoaded', () => {
       );
     }
 
+
     animate() {
       this.x += this.xSpeed;
       this.y += this.ySpeed;
@@ -104,3 +111,4 @@ window.addEventListener('DOMContentLoaded', () => {
     }
   }
 });
+
