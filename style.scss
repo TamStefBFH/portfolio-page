@@ -922,7 +922,7 @@ header {
   margin: 0;
   font-size: 1.2em;
   color: var(--first); // <--- Ergänzen
-  font-weight: bold;
+  font-weight: 700;
   text-align: center;
 }
 
@@ -1106,6 +1106,57 @@ header {
     }
   }
 }
+
+
+.languages-section {
+  background: var(--bg-color);
+  padding: 80px 20px;
+  text-align: center;
+
+  .section-title {
+    font-size: 3em;
+    margin-bottom: 40px;
+    font-weight: bold;
+    color: var(--first);
+
+    span {
+      color: var(--color);
+    }
+  }
+
+  .languages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 30px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+    h3 {
+      margin-bottom: 10px;
+      font-size: 1.4em;
+      color: var(--color);
+    }
+
+    p {
+      font-size: 1em;
+      color: var(--first);
+    }
+  }
+
+
+
+.skill-box p {
+  margin-top: 10px;
+  font-size: 0.95em;
+  color: var(--first);
+}
+
+#languages .skill-box {
+  min-height: 180px;
+  height: auto;
+}
+
 
 
 
