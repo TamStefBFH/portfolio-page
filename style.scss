@@ -29,26 +29,20 @@ body {
     --mob-color: #363636;
 }
 
-html, body {
-  height: 100%;
-  background: var(--bg-color);
-  transition: background 0.3s ease;
+body.dark-mode {
+    --text-color: #222;
+    --bg-color: #f2f2f2;
+    --first: #222;
+    --second: #fff;
+    --mob-color: #eae6e6;
 }
 
-body.dark-mode {
+body.light-mode {
   --text-color: #fff;
   --bg-color: #1c1c1d;
   --first: #fff;
   --second: #000;
   --mob-color: #363636;
-}
-
-body.light-mode {
-  --text-color: #222;
-  --bg-color: #f2f2f2;
-  --first: #222;
-  --second: #fff;
-  --mob-color: #eae6e6;
 }
 
 .container {
@@ -1162,20 +1156,3 @@ header {
   min-height: 180px;
   height: auto;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
