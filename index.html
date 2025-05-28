@@ -52,7 +52,7 @@
             <li><a href="#">Home</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="#journey">Journey</a></li>
-            <li><a href="#skills">Skills</a></li>
+            <li><a href="#tools">Skills</a></li>
             <li><a href="#">Portfolio</a></li>
             <li><a href="#" id="openContactModal">Contact</a></li>
           </ul>
@@ -189,62 +189,70 @@
 
 
 
+<div id="skills-anchor"></div>
 
+
+<!-- TOOLS SECTION -->
+<section class="tools-section" id="tools">
+  <div class="container">
+    <h2 class="section-title">My <span>Tools</span></h2>
+    <div class="tools-grid">
+      <div class="tool-box"><i class="fa-solid fa-code"></i><h3>VS Code</h3></div>
+      <div class="tool-box"><i class="fa-brands fa-figma"></i><h3>Figma</h3></div>
+      <div class="tool-box"><i class="fa-brands fa-git"></i><h3>Git</h3></div>
+      <div class="tool-box"><i class="fa-brands fa-github"></i><h3>GitHub</h3></div>
+      <div class="tool-box"><i class="fa-brands fa-trello"></i><h3>Trello</h3></div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS SECTION -->
 <section class="skills-section" id="skills">
   <div class="container">
     <h2 class="section-title">My <span>Skills</span></h2>
 
     <div class="tab-buttons">
-      <button class="tab-button active" data-tab="tools">Tools</button>
-      <button class="tab-button" data-tab="frontend">Front-end</button>
+      <button class="tab-button active" data-tab="frontend">Front-end</button>
       <button class="tab-button" data-tab="backend">Back-end</button>
       <button class="tab-button" data-tab="business">Business</button>
     </div>
 
     <div class="tabs">
-      <div class="tab-content active" id="tools">
+      <div class="tab-content active" id="frontend">
         <div class="skills-grid">
-          <div class="skill-box"><i class="fa-solid fa-code"></i><h3>VS Code</h3></div>
-          <div class="skill-box"><i class="fa-brands fa-figma"></i><h3>Figma</h3></div>
-          <div class="skill-box"><i class="fa-brands fa-git"></i><h3>Git</h3></div>
-          <div class="skill-box"><i class="fa-brands fa-github"></i><h3>GitHub</h3></div>
-          <div class="skill-box"><i class="fa-brands fa-trello"></i><h3>Trello</h3></div>
-        </div>
-      </div>
-
-      <div class="tab-content" id="frontend">
-        <div class="skills-grid">
-          <div class="skill-box"><i class="fa-brands fa-html5"></i><h3>HTML5</h3></div>
-          <div class="skill-box"><i class="fa-brands fa-css3-alt"></i><h3>CSS3</h3></div>
-          <div class="skill-box"><i class="fa-brands fa-js"></i><h3>JavaScript</h3></div>
-          <div class="skill-box"><i class="fa-solid fa-mobile-screen-button"></i><h3>Responsive Design</h3></div>
-          <div class="skill-box"><i class="fa-solid fa-universal-access"></i><h3>Accessibility</h3></div>
-          <div class="skill-box"><i class="fa-solid fa-magnifying-glass-chart"></i><h3>SEO Basics</h3></div>
+          <div class="skill-box"><i class="fa-brands fa-html5"></i><h3>HTML5</h3><div class="progress-bar"><div class="progress" style="width: 90%;"></div></div></div>
+          <div class="skill-box"><i class="fa-brands fa-css3-alt"></i><h3>CSS3</h3><div class="progress-bar"><div class="progress" style="width: 85%;"></div></div></div>
+          <div class="skill-box"><i class="fa-brands fa-js"></i><h3>JavaScript</h3><div class="progress-bar"><div class="progress" style="width: 80%;"></div></div></div>
+          <div class="skill-box"><i class="fa-solid fa-mobile-screen-button"></i><h3>Responsive Design</h3><div class="progress-bar"><div class="progress" style="width: 85%;"></div></div></div>
+          <div class="skill-box"><i class="fa-solid fa-universal-access"></i><h3>Accessibility</h3><div class="progress-bar"><div class="progress" style="width: 75%;"></div></div></div>
+          <div class="skill-box"><i class="fa-solid fa-magnifying-glass-chart"></i><h3>SEO Basics</h3><div class="progress-bar"><div class="progress" style="width: 65%;"></div></div></div>
         </div>
       </div>
 
       <div class="tab-content" id="backend">
         <div class="skills-grid">
-          <div class="skill-box"><i class="fa-solid fa-database"></i><h3>APIs & JSON</h3></div>
-          <div class="skill-box"><i class="fa-solid fa-lock"></i><h3>Web Security</h3></div>
-          <div class="skill-box"><i class="fa-solid fa-vial"></i><h3>Testing Basics</h3></div>
-          <div class="skill-box"><i class="fa-brands fa-node-js"></i><h3>Node.js</h3></div>
-          <div class="skill-box"><i class="fa-solid fa-table"></i><h3>SQL Basics</h3></div>
+          <div class="skill-box"><i class="fa-solid fa-database"></i><h3>APIs & JSON</h3><div class="progress-bar"><div class="progress" style="width: 80%;"></div></div></div>
+          <div class="skill-box"><i class="fa-solid fa-lock"></i><h3>Web Security</h3><div class="progress-bar"><div class="progress" style="width: 70%;"></div></div></div>
+          <div class="skill-box"><i class="fa-solid fa-vial"></i><h3>Testing Basics</h3><div class="progress-bar"><div class="progress" style="width: 65%;"></div></div></div>
+          <div class="skill-box"><i class="fa-brands fa-node-js"></i><h3>Node.js</h3><div class="progress-bar"><div class="progress" style="width: 60%;"></div></div></div>
+          <div class="skill-box"><i class="fa-solid fa-table"></i><h3>SQL Basics</h3><div class="progress-bar"><div class="progress" style="width: 60%;"></div></div></div>
         </div>
       </div>
 
       <div class="tab-content" id="business">
         <div class="skills-grid">
-          <div class="skill-box"><i class="fa-solid fa-sitemap"></i><h3>Process Modeling</h3></div>
-          <div class="skill-box"><i class="fa-solid fa-people-group"></i><h3>SCRUM</h3></div>
-          <div class="skill-box"><i class="fa-solid fa-brain"></i><h3>Design Thinking</h3></div>
-          <div class="skill-box"><i class="fa-solid fa-pen-ruler"></i><h3>Wireframing</h3></div>
-          <div class="skill-box"><i class="fa-solid fa-list-check"></i><h3>Requirements Engineering</h3></div>
+          <div class="skill-box"><i class="fa-solid fa-sitemap"></i><h3>Process Modeling</h3><div class="progress-bar"><div class="progress" style="width: 90%;"></div></div></div>
+          <div class="skill-box"><i class="fa-solid fa-people-group"></i><h3>SCRUM</h3><div class="progress-bar"><div class="progress" style="width: 85%;"></div></div></div>
+          <div class="skill-box"><i class="fa-solid fa-brain"></i><h3>Design Thinking</h3><div class="progress-bar"><div class="progress" style="width: 80%;"></div></div></div>
+          <div class="skill-box"><i class="fa-solid fa-pen-ruler"></i><h3>Wireframing</h3><div class="progress-bar"><div class="progress" style="width: 75%;"></div></div></div>
+          <div class="skill-box"><i class="fa-solid fa-list-check"></i><h3>Requirements Engineering</h3><div class="progress-bar"><div class="progress" style="width: 90%;"></div></div></div>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+
 
 <script>
   const tabButtons = document.querySelectorAll('.tab-button');
