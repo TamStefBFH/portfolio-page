@@ -796,4 +796,58 @@ header nav .list-darkmode-menu .hamburger.active .bar {
   bottom: 90px;
   right: 20px;
   z-index: 1000;
+}
+
+.journey-grid-section {
+  background: var(--bg-color);
+  padding: 100px 20px;
+  color: var(--first);
+  text-align: center;
+}
+.journey-grid-section .section-title {
+  font-size: 3em;
+  margin-bottom: 60px;
+  font-weight: bold;
+}
+.journey-grid-section .section-title span {
+  color: var(--color);
+}
+.journey-grid-section .journey-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+  text-align: left;
+}
+.journey-grid-section .journey-column h3 {
+  font-size: 2em;
+  color: var(--color);
+  margin-bottom: 30px;
+}
+.journey-grid-section .journey-box {
+  background: var(--mob-color);
+  padding: 20px;
+  margin-bottom: 25px;
+  border-left: 4px solid var(--color);
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(245, 44, 249, 0.3);
+  transition: transform 0.3s;
+}
+.journey-grid-section .journey-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 30px rgba(245, 44, 249, 0.5);
+}
+.journey-grid-section .journey-box span {
+  display: block;
+  color: var(--color);
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.journey-grid-section .journey-box strong {
+  font-size: 1.2em;
+  color: var(--first);
+}
+.journey-grid-section .journey-box p {
+  font-size: 1em;
+  color: var(--first);
+  margin-top: 5px;
 }/*# sourceMappingURL=style.css.map */
