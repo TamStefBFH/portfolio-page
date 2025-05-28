@@ -9,25 +9,30 @@ hamburger.addEventListener('click', () => {
 });
 
 // Dark - Light Mode
-
 const darkModeButton = document.getElementById('darkModeButton');
 const body = document.body;
 
-const enableDarkMode = () => {
+function applyTheme(mode) {
+  if (mode === 'dark') {
     body.classList.add('dark-mode');
-    } 
-
-const disableDarkMode = () => {
+  } else {
     body.classList.remove('dark-mode');
+  }
 }
 
+// Beim Laden: gespeicherten Modus anwenden
+const savedMode = localStorage.getItem('theme') || 'light';
+applyTheme(savedMode);
+darkModeButton.checked = savedMode !== 'dark';
+
+// Beim Wechsel speichern
 darkModeButton.addEventListener('change', () => {
-    if (darkModeButton.checked) {
-        disableDarkMode();
-    } else {
-        enableDarkMode();
-    }
+  const mode = darkModeButton.checked ? 'light' : 'dark';
+  localStorage.setItem('theme', mode);
+  applyTheme(mode);
 });
+
+
 
 const typed = new Typed('.multiple', {
     strings:['Business Analystin', 'Requirements Engineer', 'IT Business Consultant'],
