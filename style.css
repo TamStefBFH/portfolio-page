@@ -967,4 +967,31 @@ header nav .list-darkmode-menu .hamburger.active .bar {
 #languages .skill-box {
   min-height: 180px;
   height: auto;
+}
+
+#music-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+#toggleMusic {
+  background-color: #f52cf9;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 24px;
+  color: var(--first);
+  cursor: pointer;
+  box-shadow: 0 0 15px #f52cf9;
+}
+
+#spotifyPlayer {
+  display: none;
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  z-index: 1000;
 }/*# sourceMappingURL=style.css.map */

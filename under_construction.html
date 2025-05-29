@@ -13,20 +13,6 @@
   <!-- Background stars -->
   <div class="falling-stars"></div>
 
-  <!-- Musik Toggle -->
-  <div id="music-toggle">
-    <button id="toggleMusic" title="Play music">🎵</button>
-  </div>
-
-  <!-- Spotify Player -->
-  <div id="spotifyPlayer">
-    <iframe style="border-radius:12px"
-      src="https://open.spotify.com/embed/album/2W7lnrsKqd1XXCHSFKl9hE?utm_source=generator&theme=0"
-      width="300" height="80" frameBorder="0"
-      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-      loading="lazy">
-    </iframe>
-  </div>
 
   <!-- Illustration -->
   <img src="images/illustration.jpg" alt="Tamara Illustration" class="profile-illustration" />
@@ -67,6 +53,23 @@
       player.style.display = player.style.display === "none" ? "block" : "none";
     });
   </script>
+
+<script>
+  fetch("music.html")
+    .then(response => response.text())
+    .then(html => {
+      document.body.insertAdjacentHTML("beforeend", html);
+      const btn = document.getElementById("toggleMusic");
+      const player = document.getElementById("spotifyPlayer");
+      if (btn && player) {
+        btn.addEventListener("click", () => {
+          player.style.display = player.style.display === "none" ? "block" : "none";
+        });
+      }
+    });
+</script>
+
+
 
 </body>
 </html>

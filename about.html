@@ -85,6 +85,22 @@
 
 <script src="main.js"></script>
 
+<script>
+  fetch("music.html")
+    .then(response => response.text())
+    .then(html => {
+      document.body.insertAdjacentHTML("beforeend", html);
+      const btn = document.getElementById("toggleMusic");
+      const player = document.getElementById("spotifyPlayer");
+      if (btn && player) {
+        btn.addEventListener("click", () => {
+          player.style.display = player.style.display === "none" ? "block" : "none";
+        });
+      }
+    });
+</script>
+
+
 
 </body>
 </html>
