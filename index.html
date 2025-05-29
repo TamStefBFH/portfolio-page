@@ -33,8 +33,9 @@
             <i class="fa-solid fa-moon"></i>
           </label>
           <button class="hamburger">
-            <div class="bar"></div>
+            <span class="bar"></span>
           </button>
+
         </div>
       </nav>
     </div>
@@ -54,14 +55,20 @@
     if (tabButtons.length === 0 || tabContents.length === 0) return;
 
     tabButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
+    // Entferne vorherige EventListener durch Klonen
+      const newBtn = btn.cloneNode(true);
+      btn.replaceWith(newBtn);
+
+      newBtn.addEventListener('click', () => {
         tabButtons.forEach(b => b.classList.remove('active'));
         tabContents.forEach(c => c.classList.remove('active'));
-        btn.classList.add('active');
-        document.getElementById(btn.dataset.tab).classList.add('active');
+        newBtn.classList.add('active');
+        const target = document.getElementById(newBtn.dataset.tab);
+        if (target) target.classList.add('active');
       });
     });
   }
+
 
     document.addEventListener('DOMContentLoaded', () => {
       // Tabs
