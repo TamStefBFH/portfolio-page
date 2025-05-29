@@ -994,4 +994,85 @@ header nav .list-darkmode-menu .hamburger.active .bar {
   bottom: 90px;
   right: 20px;
   z-index: 1000;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: var(--bg-color);
+  border: 2px solid var(--color);
+  padding: 60px 50px;
+  border-radius: 20px;
+  color: var(--text-color);
+  width: 95%;
+  max-width: 850px;
+  position: relative;
+  box-shadow: 0 0 60px rgba(245, 44, 249, 0.4);
+  font-family: "Rubik", sans-serif;
+  text-align: center;
+}
+
+.modal-content input,
+.modal-content textarea {
+  width: 100%;
+  padding: 12px;
+  background: var(--second);
+  border: none;
+  border-radius: 8px;
+  color: var(--text-color);
+  margin-bottom: 20px;
+  font-size: 1em;
+}
+
+.modal-content label {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--text-color);
+  font-weight: 600;
+}
+
+.button-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.btn-purple {
+  padding: 12px 35px;
+  border: 2px solid var(--color);
+  border-radius: 30px;
+  background: transparent;
+  color: var(--text-color);
+  font-weight: bold;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 0 10px var(--color);
+}
+
+.btn-purple:hover {
+  background-color: var(--color);
+  color: #fff;
+  box-shadow: 0 0 20px var(--color);
+}
+
+.close-button {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: var(--color);
+  cursor: pointer;
 }/*# sourceMappingURL=style.css.map */

@@ -22,7 +22,7 @@ window.addEventListener('DOMContentLoaded', () => {
   const TOTAL = 150;
   const petalArray = [];
   const petalImg = new Image();
-  petalImg.src = 'images/petal.png';
+  petalImg.src = '../images/petal.png';
 
   let aboutTextBox = null;
 
