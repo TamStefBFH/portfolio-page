@@ -78,6 +78,22 @@
   <script src="main.js"></script>
 
   <script>
+  function initTabs() {
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    if (tabButtons.length === 0 || tabContents.length === 0) return;
+
+    tabButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        tabButtons.forEach(b => b.classList.remove('active'));
+        tabContents.forEach(c => c.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById(btn.dataset.tab).classList.add('active');
+      });
+    });
+  }
+
     document.addEventListener('DOMContentLoaded', () => {
       // Tabs
       const tabButtons = document.querySelectorAll('.tab-button');
@@ -96,6 +112,11 @@
         .then(response => response.text())
         .then(html => {
           document.getElementById("content").innerHTML = html;
+
+
+          initTabs();
+
+
           const hash = window.location.hash.substring(1);
           if (hash) {
             setTimeout(() => {
@@ -116,6 +137,10 @@
             .then(response => response.text())
             .then(html => {
               document.getElementById('content').innerHTML = html;
+
+              initTabs();
+
+
               if (hash) {
                 setTimeout(() => {
                   const target = document.getElementById(hash);
