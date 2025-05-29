@@ -837,7 +837,7 @@ header nav .list-darkmode-menu .hamburger.active .bar {
 .page-under-construction .falling-stars .star {
   position: absolute;
   top: -10px;
-  background-color: white;
+  background-color: var(--first);
   border-radius: 50%;
   opacity: 0.8;
   animation: fall linear infinite;
@@ -855,15 +855,15 @@ header nav .list-darkmode-menu .hamburger.active .bar {
   z-index: 1000;
 }
 .page-under-construction #toggleMusic {
-  background-color: #f52cf9;
+  background-color: var(--color);
   border: none;
   border-radius: 50%;
   width: 50px;
   height: 50px;
   font-size: 24px;
-  color: white;
+  color: var(--first);
   cursor: pointer;
-  box-shadow: 0 0 15px #f52cf9;
+  box-shadow: 0 0 15px var(--color);
 }
 .page-under-construction #spotifyPlayer {
   display: none;

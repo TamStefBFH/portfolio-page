@@ -13,7 +13,6 @@
   <!-- Background stars -->
   <div class="falling-stars"></div>
 
-
   <!-- Illustration -->
   <img src="images/illustration.jpg" alt="Tamara Illustration" class="profile-illustration" />
 
@@ -27,43 +26,35 @@
   <!-- Back Button -->
   <a href="index.html" class="button">Back to homepage</a>
 
-  <!-- JavaScript -->
+  <!-- Theme Mode -->
   <script>
-    // Falling stars
-    const container = document.querySelector('.falling-stars');
-    for (let i = 0; i < 50; i++) {
-      const star = document.createElement('span');
-      star.classList.add('star');
-      const size = Math.random() * 2 + 1;
-      const left = Math.random() * 100;
-      const duration = Math.random() * 5 + 5;
-      const delay = Math.random() * 10;
-      star.style.width = `${size}px`;
-      star.style.height = `${size}px`;
-      star.style.left = `${left}%`;
-      star.style.animationDuration = `${duration}s`;
-      star.style.animationDelay = `${delay}s`;
-      container.appendChild(star);
+    const savedMode = localStorage.getItem("theme");
+    if (savedMode === "dark") {
+      document.body.classList.add("dark-mode");
+    } else {
+      document.body.classList.add("light-mode");
     }
   </script>
 
+  <!-- External JS -->
+  <script src="main.js"></script>
+  <script src="under_construction.js"></script>
 
-<script>
-  fetch("music.html")
-    .then(response => response.text())
-    .then(html => {
-      document.body.insertAdjacentHTML("beforeend", html);
-      const btn = document.getElementById("toggleMusic");
-      const player = document.getElementById("spotifyPlayer");
-      if (btn && player) {
-        btn.addEventListener("click", () => {
-          player.style.display = player.style.display === "none" ? "block" : "none";
-        });
-      }
-    });
-</script>
-
-
+  <!-- Music Player -->
+  <script>
+    fetch("music.html")
+      .then(response => response.text())
+      .then(html => {
+        document.body.insertAdjacentHTML("beforeend", html);
+        const btn = document.getElementById("toggleMusic");
+        const player = document.getElementById("spotifyPlayer");
+        if (btn && player) {
+          btn.addEventListener("click", () => {
+            player.style.display = player.style.display === "none" ? "block" : "none";
+          });
+        }
+      });
+  </script>
 
 </body>
 </html>
