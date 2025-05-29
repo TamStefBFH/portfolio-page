@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,8 +7,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600&display=swap" rel="stylesheet" />
-  </head>
-
+</head>
 <body>
 
   <!-- HEADER / NAVIGATION -->
@@ -44,158 +42,133 @@
 
   <main id="content"></main>
 
-
-
-<script>
-  const tabButtons = document.querySelectorAll('.tab-button');
-  const tabContents = document.querySelectorAll('.tab-content');
-
-  tabButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      tabButtons.forEach(b => b.classList.remove('active'));
-      tabContents.forEach(c => c.classList.remove('active'));
-
-      btn.classList.add('active');
-      document.getElementById(btn.dataset.tab).classList.add('active');
-    });
-  });
-</script>
-
-<style>
-  .tab-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 40px;
-    flex-wrap: wrap;
-  }
-
-  .tab-button {
-    background: transparent;
-    border: 2px solid var(--color);
-    color: var(--first);
-    padding: 10px 25px;
-    border-radius: 25px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: all 0.3s ease;
-  }
-
-  .tab-button.active,
-  .tab-button:hover {
-    background: var(--color);
-    color: var(--first);
-    box-shadow: 0 0 10px var(--color);
-  }
-
-  .tab-content {
-    display: none;
-  }
-
-  .tab-content.active {
-    display: block;
-  }
-</style>
-
- 
+  <style>
+    .tab-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+    .tab-button {
+      background: transparent;
+      border: 2px solid var(--color);
+      color: var(--first);
+      padding: 10px 25px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    .tab-button.active,
+    .tab-button:hover {
+      background: var(--color);
+      color: var(--first);
+      box-shadow: 0 0 10px var(--color);
+    }
+    .tab-content {
+      display: none;
+    }
+    .tab-content.active {
+      display: block;
+    }
+  </style>
 
   <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
-
- 
   <script src="main.js"></script>
 
-<script>
-  fetch("music.html")
-    .then(response => response.text())
-    .then(html => {
-      document.body.insertAdjacentHTML("beforeend", html);
-      const btn = document.getElementById("toggleMusic");
-      const player = document.getElementById("spotifyPlayer");
-      if (btn && player) {
-        btn.addEventListener("click", () => {
-          player.style.display = player.style.display === "none" ? "block" : "none";
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Tabs
+      const tabButtons = document.querySelectorAll('.tab-button');
+      const tabContents = document.querySelectorAll('.tab-content');
+      tabButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          tabButtons.forEach(b => b.classList.remove('active'));
+          tabContents.forEach(c => c.classList.remove('active'));
+          btn.classList.add('active');
+          document.getElementById(btn.dataset.tab).classList.add('active');
         });
-      }
-    });
-</script>
+      });
 
-
-<script>
-  document.querySelectorAll('nav a[href^="pages/"]').forEach(link => {
-    link.addEventListener('click', function (e) {
-      e.preventDefault(); // Seite nicht neu laden
-      const page = this.getAttribute('href');
-
-      fetch(page)
+      // Initiales Laden + Hash-Scroll
+      fetch("pages/home.html")
         .then(response => response.text())
         .then(html => {
-          document.getElementById('content').innerHTML = html;
+          document.getElementById("content").innerHTML = html;
+          const hash = window.location.hash.substring(1);
+          if (hash) {
+            setTimeout(() => {
+              const target = document.getElementById(hash);
+              if (target) target.scrollIntoView({ behavior: "smooth" });
+            }, 100);
+          }
+        });
 
-          // Falls die geladene Seite ein Sakura-Canvas enthält, Animation neu starten
-          const sakuraScript = document.querySelector('script[src="sakura.js"]');
-          if (sakuraScript) {
-            const newScript = document.createElement('script');
-            newScript.src = "sakura.js";
-            document.body.appendChild(newScript);
+      // SPA Navigation
+      document.querySelectorAll('nav a[href^="pages/"]').forEach(link => {
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          const fullHref = this.getAttribute('href');
+          const [page, hash] = fullHref.split('#');
+
+          fetch(page)
+            .then(response => response.text())
+            .then(html => {
+              document.getElementById('content').innerHTML = html;
+              if (hash) {
+                setTimeout(() => {
+                  const target = document.getElementById(hash);
+                  if (target) target.scrollIntoView({ behavior: "smooth" });
+                }, 100);
+              }
+
+              const sakuraScript = document.querySelector('script[src="sakura.js"]');
+              if (sakuraScript) {
+                const newScript = document.createElement('script');
+                newScript.src = "sakura.js";
+                document.body.appendChild(newScript);
+              }
+            });
+        });
+      });
+
+      // Modal
+      fetch("components/contact-modal.html")
+        .then(res => res.text())
+        .then(html => {
+          document.body.insertAdjacentHTML("beforeend", html);
+          const modal = document.getElementById("contactModal");
+          const openBtn = document.getElementById("openContactModal");
+          const closeBtn = document.querySelector(".close-button");
+
+          if (modal && openBtn && closeBtn) {
+            openBtn.addEventListener("click", e => {
+              e.preventDefault();
+              modal.style.display = "flex";
+            });
+            closeBtn.addEventListener("click", () => modal.style.display = "none");
+            window.addEventListener("click", e => {
+              if (e.target === modal) modal.style.display = "none";
+            });
+          }
+        });
+
+      // Music Player
+      fetch("music.html")
+        .then(response => response.text())
+        .then(html => {
+          document.body.insertAdjacentHTML("beforeend", html);
+          const btn = document.getElementById("toggleMusic");
+          const player = document.getElementById("spotifyPlayer");
+          if (btn && player) {
+            btn.addEventListener("click", () => {
+              player.style.display = player.style.display === "none" ? "block" : "none";
+            });
           }
         });
     });
-  });
-</script>
-
-<script>
-  // Beim initialen Laden: home.html inhalt laden
-  window.addEventListener('DOMContentLoaded', () => {
-    fetch("pages/home.html")
-      .then(response => response.text())
-      .then(html => {
-        document.getElementById("content").innerHTML = html;
-      });
-  });
-</script>
-
-
-
-<!-- Add this to your index.html script section AFTER the contact-modal.html is loaded -->
-<script>
-  // Warten bis DOM + Modal geladen ist
-  document.addEventListener("DOMContentLoaded", () => {
-    fetch("components/contact-modal.html")
-      .then(res => res.text())
-      .then(html => {
-        document.body.insertAdjacentHTML("beforeend", html);
-
-        // Jetzt Modal-Elemente binden
-        const contactModal = document.getElementById("contactModal");
-        const openBtn = document.getElementById("openContactModal");
-        const closeBtn = document.querySelector(".close-button");
-
-        if (openBtn && contactModal && closeBtn) {
-          openBtn.addEventListener("click", function(e) {
-            e.preventDefault();
-            contactModal.style.display = "flex"; // "flex" sorgt für zentriertes Modal
-          });
-
-          closeBtn.addEventListener("click", function() {
-            contactModal.style.display = "none";
-          });
-
-          window.addEventListener("click", function(e) {
-            if (e.target === contactModal) {
-              contactModal.style.display = "none";
-            }
-          });
-        }
-      });
-  });
-</script>
-
-
+  </script>
 
 </body>
 </html>
-
-
-
-
-
