@@ -1,5 +1,4 @@
-// Hintergrund-Sterne generieren
-document.addEventListener("DOMContentLoaded", () => {
+function initFallingStars() {
   const container = document.querySelector('.falling-stars');
   if (container) {
     for (let i = 0; i < 50; i++) {
@@ -20,8 +19,10 @@ document.addEventListener("DOMContentLoaded", () => {
       container.appendChild(star);
     }
   }
+}
 
-  // Musik-Button
+// Musik-Button
+function initMusicToggle() {
   const btn = document.getElementById("toggleMusic");
   const player = document.getElementById("spotifyPlayer");
 
@@ -30,12 +31,23 @@ document.addEventListener("DOMContentLoaded", () => {
       player.style.display = player.style.display === "none" ? "block" : "none";
     });
   }
+}
 
-  // Theme anwenden
-  const savedMode = localStorage.getItem("theme");
-  if (savedMode === "dark") {
-    document.body.classList.add("dark-mode");
-  } else {
-    document.body.classList.add("light-mode");
-  }
-});
+// Theme anwenden
+function applySavedTheme() {
+  const savedMode = localStorage.getItem("theme") || "light";
+  document.body.classList.remove("dark-mode", "light-mode");
+  document.body.classList.add(savedMode === "dark" ? "dark-mode" : "light-mode");
+}
+
+
+// Optionaler Auto-Start bei statischem Laden
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", () => {
+    initFallingStars();
+    initMusicToggle();
+  });
+} else {
+  initFallingStars();
+  initMusicToggle();
+}

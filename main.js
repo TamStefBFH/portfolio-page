@@ -12,6 +12,46 @@ document.querySelectorAll('nav a[href^="pages/"]').forEach(link => {
 
         initTabs();
 
+        // Füge dies hinzu:
+        const pageContent = html.toLowerCase();
+        const isAboutPage = pageContent.includes('<section class="about">');
+
+        // Sterne-Animation aktivieren
+        if (isAboutPage) {
+          if (!document.querySelector('.falling-stars')) {
+            const starsContainer = document.createElement("div");
+            starsContainer.className = "falling-stars";
+            document.body.appendChild(starsContainer);
+          }
+
+          if (!document.querySelector('script[src="under_construction.js"]')) {
+          const script = document.createElement("script");
+          script.src = "under_construction.js";
+          script.onload = () => {
+            if (typeof initFallingStars === "function") {
+              initFallingStars();
+            }
+            if (typeof initMusicToggle === "function") {
+              initMusicToggle();
+            }
+            if (typeof applySavedTheme === "function") {
+              applySavedTheme();
+            }
+          };
+          document.body.appendChild(script);
+        } else {
+          if (typeof initFallingStars === "function") {
+            initFallingStars();
+          }
+          if (typeof initMusicToggle === "function") {
+            initMusicToggle();
+          }
+          if (typeof applySavedTheme === "function") {
+            applySavedTheme();
+          }
+        }
+        }
+
         // Menü schließen nach Navigation
         hamburger.classList.remove('active');
         navList.classList.remove('active');
@@ -104,4 +144,20 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   }
 });
+
+function createStar() {
+  const container = document.querySelector(".falling-stars");
+  if (!container) return;
+
+  const star = document.createElement("div");
+  star.className = "star";
+  const size = Math.random() * 3 + 2;
+  star.style.width = `${size}px`;
+  star.style.height = `${size}px`;
+  star.style.left = `${Math.random() * 100}%`;
+  star.style.animationDuration = `${Math.random() * 3 + 2}s`;
+  container.appendChild(star);
+
+  setTimeout(() => star.remove(), 5000);
+}
 

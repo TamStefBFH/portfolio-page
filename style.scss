@@ -732,16 +732,6 @@ header {
   }
 }
 
-/* Sakura Animation Styling */
-#sakuraCanvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none;
-  z-index: 999; /* hoch genug, um über Content zu liegen */
-}
 
 .skills-section {
   display: flex;
@@ -1001,32 +991,7 @@ header {
     }
   }
 
-  .falling-stars {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    z-index: 0;
-    pointer-events: none;
-
-    .star {
-      position: absolute;
-      top: -10px;
-      background-color: var(--first);
-      border-radius: 50%;
-      opacity: 0.8;
-      animation: fall linear infinite;
-    }
-  }
-
-  @keyframes fall {
-    to {
-      transform: translateY(110vh);
-      opacity: 0;
-    }
-  }
+  
 
   #music-toggle {
     position: fixed;
@@ -1363,3 +1328,29 @@ header {
 }
 
 
+.falling-stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    z-index: 999;
+    pointer-events: none;
+
+    .star {
+      position: absolute;
+      top: -10px;
+      background-color: var(--first);
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: fall linear infinite;
+    }
+  }
+
+  @keyframes fall {
+    to {
+      transform: translateY(110vh);
+      opacity: 0;
+    }
+  }

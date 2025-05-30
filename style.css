@@ -1,4 +1,3 @@
-@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 * {
   margin: 0;
@@ -586,17 +585,6 @@ header nav .list-darkmode-menu .hamburger.active .bar {
     font-size: 1em;
   }
 }
-/* Sakura Animation Styling */
-#sakuraCanvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none;
-  z-index: 999; /* hoch genug, um über Content zu liegen */
-}
-
 .skills-section {
   display: flex;
   flex-direction: column;
@@ -821,30 +809,6 @@ header nav .list-darkmode-menu .hamburger.active .bar {
 .page-under-construction .profile-illustration:hover {
   transform: scale(1.05);
   box-shadow: 0 0 80px var(--color);
-}
-.page-under-construction .falling-stars {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  z-index: 0;
-  pointer-events: none;
-}
-.page-under-construction .falling-stars .star {
-  position: absolute;
-  top: -10px;
-  background-color: var(--first);
-  border-radius: 50%;
-  opacity: 0.8;
-  animation: fall linear infinite;
-}
-@keyframes fall {
-  to {
-    transform: translateY(110vh);
-    opacity: 0;
-  }
 }
 .page-under-construction #music-toggle {
   position: fixed;
@@ -1140,4 +1104,30 @@ header nav .list-darkmode-menu .hamburger.active .bar {
 }
 .project a:hover {
   text-decoration: underline;
+}
+
+.falling-stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  z-index: 999;
+  pointer-events: none;
+}
+.falling-stars .star {
+  position: absolute;
+  top: -10px;
+  background-color: var(--first);
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh);
+    opacity: 0;
+  }
 }/*# sourceMappingURL=style.css.map */

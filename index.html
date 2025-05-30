@@ -9,6 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600&display=swap" rel="stylesheet" />
 </head>
 <body>
+  <div class="falling-stars"></div>
 
   <!-- HEADER / NAVIGATION -->
   <header>
@@ -114,8 +115,34 @@ document.querySelectorAll('nav a[href^="pages/"]').forEach(link => {
       .then(html => {
         document.getElementById('content').innerHTML = html;
 
+
         initTabs();
 
+
+            // Sterne bei bestimmten Seiten aktivieren
+    if (page.includes("about.html") || page.includes("under_construction.html")) {
+      // Container einfügen, falls nicht vorhanden
+      if (!document.querySelector('.falling-stars')) {
+        const starsContainer = document.createElement("div");
+        starsContainer.className = "falling-stars";
+        document.body.appendChild(starsContainer);
+      }
+
+      // Script nur einmal laden
+      if (!document.querySelector('script[src="under_construction.js"]')) {
+        const script = document.createElement("script");
+        script.src = "under_construction.js";
+        document.body.appendChild(script);
+      }
+    } else {
+      const existing = document.querySelector('.falling-stars');
+      if (existing) existing.remove();
+
+      const existingScript = document.querySelector('script[src="under_construction.js"]');
+      if (existingScript) existingScript.remove();
+    }
+
+    
         // GitHub-Projekte laden
         const projectsContainer = document.getElementById("projects");
         if (projectsContainer) {
@@ -145,13 +172,6 @@ document.querySelectorAll('nav a[href^="pages/"]').forEach(link => {
             const target = document.getElementById(hash);
             if (target) target.scrollIntoView({ behavior: "smooth" });
           }, 100);
-        }
-
-        const sakuraScript = document.querySelector('script[src="sakura.js"]');
-        if (sakuraScript) {
-          const newScript = document.createElement('script');
-          newScript.src = "sakura.js";
-          document.body.appendChild(newScript);
         }
       });
   });
