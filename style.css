@@ -1075,4 +1075,47 @@ header nav .list-darkmode-menu .hamburger.active .bar {
   font-size: 24px;
   color: var(--color);
   cursor: pointer;
+}
+
+.projects-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.project {
+  background: var(--bg-color);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(245, 44, 249, 0.3);
+  transition: transform 0.3s ease;
+  height: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.project:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 0 50px rgba(245, 44, 249, 0.8);
+}
+.project h3 {
+  color: var(--color);
+  font-weight: bold;
+  font-size: 1.2em;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.project p {
+  color: var(--first);
+  font-size: 1em;
+  margin-bottom: 10px;
+}
+.project a {
+  color: var(--text-color);
+  text-decoration: underline;
+  font-weight: 600;
 }/*# sourceMappingURL=style.css.map */

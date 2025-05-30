@@ -102,37 +102,61 @@
           }
         });
 
-      // SPA Navigation
-      document.querySelectorAll('nav a[href^="pages/"]').forEach(link => {
-        link.addEventListener('click', function (e) {
-          e.preventDefault();
-          const fullHref = this.getAttribute('href');
-          const [page, hash] = fullHref.split('#');
+     // SPA Navigation
+document.querySelectorAll('nav a[href^="pages/"]').forEach(link => {
+  link.addEventListener('click', function (e) {
+    e.preventDefault();
+    const fullHref = this.getAttribute('href');
+    const [page, hash] = fullHref.split('#');
 
-          fetch(page)
-            .then(response => response.text())
-            .then(html => {
-              document.getElementById('content').innerHTML = html;
+    fetch(page)
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('content').innerHTML = html;
 
-              initTabs();
+        initTabs();
 
-
-              if (hash) {
-                setTimeout(() => {
-                  const target = document.getElementById(hash);
-                  if (target) target.scrollIntoView({ behavior: "smooth" });
-                }, 100);
-              }
-
-              const sakuraScript = document.querySelector('script[src="sakura.js"]');
-              if (sakuraScript) {
-                const newScript = document.createElement('script');
-                newScript.src = "sakura.js";
-                document.body.appendChild(newScript);
-              }
+        // GitHub-Projekte laden
+        const projectsContainer = document.getElementById("projects");
+        if (projectsContainer) {
+          fetch("https://api.github.com/users/TamStefBFH/repos")
+            .then(response => response.json())
+            .then(repos => {
+              projectsContainer.innerHTML = "";
+              repos.forEach(repo => {
+                const div = document.createElement("div");
+                div.className = "project";
+                div.innerHTML = `
+                  <h3>${repo.name}</h3>
+                  <p>${repo.description || "No description available."}</p>
+                  <a href="${repo.html_url}" target="_blank">View on GitHub</a>
+                `;
+                projectsContainer.appendChild(div);
+              });
+            })
+            .catch(error => {
+              projectsContainer.textContent = "Failed to load projects.";
+              console.error("GitHub API error:", error);
             });
-        });
+        }
+
+        if (hash) {
+          setTimeout(() => {
+            const target = document.getElementById(hash);
+            if (target) target.scrollIntoView({ behavior: "smooth" });
+          }, 100);
+        }
+
+        const sakuraScript = document.querySelector('script[src="sakura.js"]');
+        if (sakuraScript) {
+          const newScript = document.createElement('script');
+          newScript.src = "sakura.js";
+          document.body.appendChild(newScript);
+        }
       });
+  });
+});
+
 
       // Modal
       fetch("components/contact-modal.html")

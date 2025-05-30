@@ -79,3 +79,29 @@ if (typedElement) {
     loop: true
   });
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  const projectsContainer = document.getElementById("projects");
+  if (projectsContainer) {
+    fetch("https://api.github.com/users/TamStefBFH/repos")
+      .then(response => response.json())
+      .then(repos => {
+        projectsContainer.innerHTML = "";
+        repos.forEach(repo => {
+          const div = document.createElement("div");
+          div.className = "project";
+          div.innerHTML = `
+            <h3>${repo.name}</h3>
+            <p>${repo.description || "No description available."}</p>
+            <a href="${repo.html_url}" target="_blank">View on GitHub</a>
+          `;
+          projectsContainer.appendChild(div);
+        });
+      })
+      .catch(error => {
+        projectsContainer.textContent = "Failed to load projects.";
+        console.error("GitHub API error:", error);
+      });
+  }
+});
+
